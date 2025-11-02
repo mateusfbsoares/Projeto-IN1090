@@ -1364,7 +1364,7 @@
       <ownedDataPkg xsi:type="org.polarsys.capella.core.data.information:DataPkg"
           id="b4433b8c-dc2e-4735-9221-6ad6fa3a5ec1" name="Data"/>
       <ownedPhysicalComponentPkg xsi:type="org.polarsys.capella.core.data.pa:PhysicalComponentPkg"
-          id="eb333ccb-25fd-49f5-959f-646938aa3d9e" name="Structure" description="&lt;p>&lt;a href=&quot;https://www.amazon.com.br/Bluethooth-Scanner-Diagn%C3%B3stico-Automotivo-ELM327/dp/B00QUL6U8Y?source=ps-sl-shoppingads-lpcontext&amp;amp;psc=1&amp;amp;smid=A30AYYSYOBOWZR&quot;>https://www.amazon.com.br/Bluethooth-Scanner-Diagn%C3%B3stico-Automotivo-ELM327/dp/B00QUL6U8Y?source=ps-sl-shoppingads-lpcontext&amp;amp;psc=1&amp;amp;smid=A30AYYSYOBOWZR&lt;/a>&lt;/p>&#xA;">
+          id="eb333ccb-25fd-49f5-959f-646938aa3d9e" name="Structure" description="">
         <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
             id="a57a0942-17a6-44a8-a8e5-8c1ac60b7d6a" targetElement="#50c5419a-3d07-4cef-9eb9-1ee479353101"
             sourceElement="#7dccd781-8e65-40c3-95bf-f8be492fdf66"/>
