@@ -49,7 +49,7 @@
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
               id="942ed173-8f94-40ea-b1e0-4f19f6d72e0c" name="Fornece Dados"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.oa:OperationalActivity"
-              id="6e2c9fcd-aa0a-4cbd-a71d-cb0a567d958e" name="Visualiza Dados em Tempo Real e Históricos da Frota de Veículos"/>
+              id="6e2c9fcd-aa0a-4cbd-a71d-cb0a567d958e" name="Visualiza Dados em Tempo Real e Históricos da Frota de Veículos + Insights Sobre a Frota"/>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="d6034f28-a476-41a9-a6e5-cadb543a5ba9" name="Dados" target="#6e2c9fcd-aa0a-4cbd-a71d-cb0a567d958e"
               source="#942ed173-8f94-40ea-b1e0-4f19f6d72e0c"/>
@@ -72,6 +72,8 @@
           <ownedEntityOperationalCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.oa:EntityOperationalCapabilityInvolvement"
               id="532f0433-8801-4463-95d9-1741afc221d9" involved="#37ebfe2d-6e70-40fc-9e6c-88cc25ae4201"/>
         </ownedOperationalCapabilities>
+        <ownedOperationalCapabilities xsi:type="org.polarsys.capella.core.data.oa:OperationalCapability"
+            id="3631b14f-1f20-4f48-b9ab-e9d9c263d0f8" name="Extrair Insights Sobre a Frota"/>
       </ownedAbstractCapabilityPkg>
       <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
           id="518c4c9c-3a05-46fe-b991-2c5798e0da32" name="Interfaces"/>
@@ -119,6 +121,8 @@
                 id="eb3cc752-dbc4-4b95-984e-4029f7523fd4" name="inDados"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="bf87a00c-8a26-4fd3-b2d5-06556157fd0d" name="FOP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="9e49d3c0-f572-43fc-aec4-8988ac8f6999" name="FOP 2"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
               id="cb9d7c1f-d765-4fa0-bf9f-f63b78ee1d5e" name="Fornece Dados">
@@ -129,9 +133,11 @@
                 sourceElement="#cb9d7c1f-d765-4fa0-bf9f-f63b78ee1d5e"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
-              id="3c0ec69e-90ee-4a9c-a3df-c65243b69d17" name="Exibe uma Visualização de Dados em Tempo Real e Históricos da Frota de Veículos">
+              id="3c0ec69e-90ee-4a9c-a3df-c65243b69d17" name="Exibe uma Visualização de Dados em Tempo Real e Históricos da Frota de Veículos + Insights Sobre a Frota">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
-                id="7fa35ab6-1c0d-4979-b571-678a69fc4e61" name="FIP 1"/>
+                id="f20a81e6-82d3-4ec0-8bc8-2fff7b263bd3" name="FIP 1"/>
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="89182dbf-8a2f-4f0e-8ca3-a0a490001920" name="FIP 2"/>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="09da0c8e-0e7d-458a-9bee-c3619b27f880" name="FOP 1"/>
           </ownedFunctions>
@@ -142,6 +148,13 @@
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                 id="304bb3ee-6fb9-4a0b-872b-53fd06426351" targetElement="#6e2c9fcd-aa0a-4cbd-a71d-cb0a567d958e"
                 sourceElement="#ac656e60-4975-42ae-a171-fb9850c0b681"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.ctx:SystemFunction"
+              id="32300cc0-3581-43bb-825a-ed9bba812c0c" name="Extrai Insights Sobre a Frota">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="7fa35ab6-1c0d-4979-b571-678a69fc4e61" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="07ff2ad6-d1d2-4819-a426-10bb9c8ab39f" name="FOP 1"/>
           </ownedFunctions>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="f32de1a9-a07d-432a-b938-6cfde56c4823" targetElement="#7bf97cc5-5250-4332-9170-8403727e45c3"
@@ -159,6 +172,12 @@
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="852daef6-1ca2-4356-8fba-6e880b1d3f4c" name="Visualização" target="#534d5f8e-bef4-4182-be7d-5d8c343688d9"
               source="#09da0c8e-0e7d-458a-9bee-c3619b27f880"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="91f4e042-b1d3-4e4e-9473-d604c33835a8" name="Insights Sobre a Frota"
+              target="#f20a81e6-82d3-4ec0-8bc8-2fff7b263bd3" source="#07ff2ad6-d1d2-4819-a426-10bb9c8ab39f"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="5da722e0-76a1-49b1-b0de-9464f66366b0" name="Dados de 1..* Veículos"
+              target="#89182dbf-8a2f-4f0e-8ca3-a0a490001920" source="#9e49d3c0-f572-43fc-aec4-8988ac8f6999"/>
         </ownedSystemFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.ctx:CapabilityPkg"
@@ -282,6 +301,9 @@
           <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
               id="93f0de6f-b1f7-4876-b753-c8d44caceede" targetElement="#4ea657fc-e81b-4126-a4a3-06ab7d8bb7e6"
               sourceElement="#1088ac4b-623f-4f88-937f-34717e87ba4d"/>
+          <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+              id="4a72f8e5-3c85-433f-8b3c-5663f257f68b" targetElement="#32300cc0-3581-43bb-825a-ed9bba812c0c"
+              sourceElement="#1088ac4b-623f-4f88-937f-34717e87ba4d"/>
         </ownedSystemComponents>
         <ownedSystemComponents xsi:type="org.polarsys.capella.core.data.ctx:SystemComponent"
             id="b3bb94da-4d8d-4f7f-a909-cd494ee364b8" name="Analista" actor="true">
@@ -343,11 +365,9 @@
                   sourceElement="#90c7293c-0498-40c9-9d0c-08aa2e147272"/>
             </inputs>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
-                id="08f4f328-d2a3-437b-b302-208419fce12a" name="FOP 1">
-              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
-                  id="929a9b3c-db59-4862-9d63-8526b9b030f9" targetElement="#bf87a00c-8a26-4fd3-b2d5-06556157fd0d"
-                  sourceElement="#08f4f328-d2a3-437b-b302-208419fce12a"/>
-            </outputs>
+                id="a52de783-841e-47c4-a68b-1bdb63d69f33" name="FOP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="e0556614-54d4-4d02-a6aa-2e2816446696" name="FOP 2"/>
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                 id="35df1ca0-988d-4adc-a5cc-9effb2dc1d5a" targetElement="#4ea657fc-e81b-4126-a4a3-06ab7d8bb7e6"
                 sourceElement="#ead23702-1f16-404d-afae-3a715d300790"/>
@@ -365,9 +385,9 @@
                 sourceElement="#62346d33-ce86-4f92-81df-1489e3b2e079"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="e2516a0a-64b2-48c3-976e-2265375b6b7d" name="Exibe Visualização de Dados em Tempo Real e Históricos da Frota">
+              id="e2516a0a-64b2-48c3-976e-2265375b6b7d" name="Exibe uma Visualização de Dados em Tempo Real e Históricos da Frota de Veículos + Insights Sobre a Frota">
             <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
-                id="70914689-81aa-437b-ab70-9a80c1a2701b" name="0..*" constrainedElements="#e2516a0a-64b2-48c3-976e-2265375b6b7d #ae27da53-0ba1-4262-bdaf-57b5026b2650">
+                id="70914689-81aa-437b-ab70-9a80c1a2701b" name="0..*" constrainedElements="#e2516a0a-64b2-48c3-976e-2265375b6b7d #dd481e7d-da13-4094-a3b8-e9903e934230 #ae27da53-0ba1-4262-bdaf-57b5026b2650">
               <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
                   id="bcb988f3-0244-43db-b5dc-182516ec2d0e">
                 <bodies></bodies>
@@ -376,6 +396,12 @@
             </ownedConstraints>
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="ffa82c72-7012-4fb0-bd7f-5ff20397b2b8" name="FIP 1"/>
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="3df1f3ea-e73a-48e7-a9cb-8108b7b90d10" name="FIP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="7201c954-d2ad-412a-8435-51e1d2e1f1ca" targetElement="#f20a81e6-82d3-4ec0-8bc8-2fff7b263bd3"
+                  sourceElement="#3df1f3ea-e73a-48e7-a9cb-8108b7b90d10"/>
+            </inputs>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="ef91adc9-3594-4dbd-b730-ae7b2b2bc9d4" name="FOP 1">
               <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
@@ -408,6 +434,42 @@
             </inputs>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="8da77af0-2452-4dbc-a6ff-f2d22b643d0d" name="FOP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="296e6b2e-d119-4f4e-a98d-bc8685a2603e" name="FOP 2"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="eff8071e-8955-4d56-a4bf-7faf439c36da" name="Armazenar Dados do Veículo">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="82fdae66-ed91-4de6-9669-3310061a6ac5" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="259aa151-a9f3-48c8-b39c-55c6c05d053d" name="FOP 1"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="9a2799a7-7b81-480c-82a8-a6ebc351d51f" name="LogicalFunction 7" kind="GATHER">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="fae8154e-0b40-4dc3-8b96-16059ba5ece0" name="FIP 1"/>
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="fec0227f-8049-4766-814e-7d24f0a79859" name="FIP 2"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="08f4f328-d2a3-437b-b302-208419fce12a" name="FOP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="929a9b3c-db59-4862-9d63-8526b9b030f9" targetElement="#bf87a00c-8a26-4fd3-b2d5-06556157fd0d"
+                  sourceElement="#08f4f328-d2a3-437b-b302-208419fce12a"/>
+            </outputs>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
+              id="f5c24b29-9bbd-4dd1-8868-ad3fdf5bbca4" name="Extrai Insights Sobre a Frota">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="05297ece-7270-4010-9d7d-464a0d8339d2" name="FIP 1"/>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="a52ae52e-5fe9-467c-b01f-4dc7a3c6cb52" name="FOP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="114175e9-0881-4f43-832a-acd97c05c4ab" targetElement="#07ff2ad6-d1d2-4819-a426-10bb9c8ab39f"
+                  sourceElement="#a52ae52e-5fe9-467c-b01f-4dc7a3c6cb52"/>
+            </outputs>
+            <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
+                id="abe5d4ae-645d-4d15-abfc-cbfa7bba5ae4" targetElement="#32300cc0-3581-43bb-825a-ed9bba812c0c"
+                sourceElement="#f5c24b29-9bbd-4dd1-8868-ad3fdf5bbca4"/>
           </ownedFunctions>
           <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
               id="24db5499-deec-4b54-aa2a-f54555304702" targetElement="#08790294-ed9d-4010-9a4c-f2640f5780d5"
@@ -434,8 +496,27 @@
                 sourceElement="#c5e8dbaf-d106-4caa-a571-c6eb59e64e12"/>
           </ownedFunctionalExchanges>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="ae27da53-0ba1-4262-bdaf-57b5026b2650" name="Dados da Frota" target="#ffa82c72-7012-4fb0-bd7f-5ff20397b2b8"
-              source="#8da77af0-2452-4dbc-a6ff-f2d22b643d0d"/>
+              id="ae27da53-0ba1-4262-bdaf-57b5026b2650" name="Dados de 1..* Veículos"
+              target="#ffa82c72-7012-4fb0-bd7f-5ff20397b2b8" source="#8da77af0-2452-4dbc-a6ff-f2d22b643d0d"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="25413217-ec2c-4d65-bc9e-49bc6efd55bc" name="Dados em Tempo Real de 1 Veículo"
+              target="#fae8154e-0b40-4dc3-8b96-16059ba5ece0" source="#a52de783-841e-47c4-a68b-1bdb63d69f33"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="0a671736-d157-4d92-8d20-1e98cb01561b" name="Dados em Tempo Real de 1 Veículo"
+              target="#82fdae66-ed91-4de6-9669-3310061a6ac5" source="#e0556614-54d4-4d02-a6aa-2e2816446696"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="7c57ce68-df32-4180-8e70-2126ef396ae6" name="Dados Históricos de 1 Veículo"
+              target="#fec0227f-8049-4766-814e-7d24f0a79859" source="#259aa151-a9f3-48c8-b39c-55c6c05d053d"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="dd481e7d-da13-4094-a3b8-e9903e934230" name="Insights Sobre a Frota"
+              target="#3df1f3ea-e73a-48e7-a9cb-8108b7b90d10" source="#a52ae52e-5fe9-467c-b01f-4dc7a3c6cb52">
+            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
+                id="95306322-76be-4fc6-b5d7-0feb6e943616" targetElement="#91f4e042-b1d3-4e4e-9473-d604c33835a8"
+                sourceElement="#dd481e7d-da13-4094-a3b8-e9903e934230"/>
+          </ownedFunctionalExchanges>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="ffcf1668-419f-42af-9835-15617cde61ba" name="Dados de 1..* Veículos"
+              target="#05297ece-7270-4010-9d7d-464a0d8339d2" source="#296e6b2e-d119-4f4e-a98d-bc8685a2603e"/>
         </ownedLogicalFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
@@ -480,6 +561,12 @@
             <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
                 id="bfd781aa-591e-4d57-8814-742db3ecc500" targetElement="#ead23702-1f16-404d-afae-3a715d300790"
                 sourceElement="#20cda805-17c5-4453-a471-6c912f4ecd4f"/>
+            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                id="df73f6a5-693a-45c7-b7e9-c1058b82681e" targetElement="#eff8071e-8955-4d56-a4bf-7faf439c36da"
+                sourceElement="#20cda805-17c5-4453-a471-6c912f4ecd4f"/>
+            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                id="e81bed52-2897-4197-b71b-23e6978b4a7c" targetElement="#9a2799a7-7b81-480c-82a8-a6ebc351d51f"
+                sourceElement="#20cda805-17c5-4453-a471-6c912f4ecd4f"/>
           </ownedLogicalComponents>
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
               id="7865d2f1-39f4-447a-85f9-bf9cf82f8181" name="Client">
@@ -491,6 +578,9 @@
               id="b0e8e340-f4e3-40c5-a9a7-92090607660f" name="Backend">
             <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
                 id="38427fca-51cf-40f1-9531-a4b18311a853" targetElement="#b4aac2cd-9153-48ca-abb0-1c536aaa7786"
+                sourceElement="#b0e8e340-f4e3-40c5-a9a7-92090607660f"/>
+            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                id="30a4e456-7b3f-4756-b9e1-de506d3e8f30" targetElement="#f5c24b29-9bbd-4dd1-8868-ad3fdf5bbca4"
                 sourceElement="#b0e8e340-f4e3-40c5-a9a7-92090607660f"/>
           </ownedLogicalComponents>
         </ownedLogicalComponents>
@@ -574,12 +664,32 @@
                 sourceElement="#6221cfc7-e15d-4b52-9c61-3e32e792fd83"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
-              id="1ee5e972-32b0-44eb-8397-71eb3bd7344d" name="Exibe Visualização de Dados em Tempo Real e Históricos da Frota">
+              id="1ee5e972-32b0-44eb-8397-71eb3bd7344d" name="Exibe uma Visualização de Dados em Tempo Real e Históricos da Frota de Veículos + Insights Sobre a Frota">
+            <ownedConstraints xsi:type="org.polarsys.capella.core.data.capellacore:Constraint"
+                id="4f4ffd8c-9d3f-4dc8-88e9-e3d6fd580a8f" name="0..*" constrainedElements="#1ee5e972-32b0-44eb-8397-71eb3bd7344d #80850ba5-73ca-49ae-9343-9db3634487c6">
+              <ownedSpecification xsi:type="org.polarsys.capella.core.data.information.datavalue:OpaqueExpression"
+                  id="e0df0b83-ecbb-418b-9e85-081b9068218a">
+                <bodies></bodies>
+                <languages>capella:linkedText</languages>
+              </ownedSpecification>
+            </ownedConstraints>
+            <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
+                id="4e25cdc9-397f-46b4-9f88-25c551b69a4d" targetElement="#70914689-81aa-437b-ab70-9a80c1a2701b"
+                sourceElement="#4f4ffd8c-9d3f-4dc8-88e9-e3d6fd580a8f"/>
+            <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
+                id="fb2a6267-a381-4c99-90f3-5f4f555b2ab8" targetElement="#bcb988f3-0244-43db-b5dc-182516ec2d0e"
+                sourceElement="#e0df0b83-ecbb-418b-9e85-081b9068218a"/>
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="236da47f-20b3-4cf7-a3e2-5538cb199f63" name="FIP 1">
               <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
                   id="2223fccb-4865-4f58-8dac-190bc425260f" targetElement="#ffa82c72-7012-4fb0-bd7f-5ff20397b2b8"
                   sourceElement="#236da47f-20b3-4cf7-a3e2-5538cb199f63"/>
+            </inputs>
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="bab2d970-0e15-40ca-9d5a-3f19208a9286" name="FIP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="166e0e46-4cf9-47b9-8056-40063f243b56" targetElement="#3df1f3ea-e73a-48e7-a9cb-8108b7b90d10"
+                  sourceElement="#bab2d970-0e15-40ca-9d5a-3f19208a9286"/>
             </inputs>
             <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
                 id="a2395328-225e-4b78-8bb5-827588219cb5" name="FOP 1">
@@ -604,6 +714,24 @@
                 sourceElement="#f975cf75-13be-440f-b17c-d5bd4a753711"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
+              id="778c2557-f36a-452b-a45e-9b04440fc85d" name="Extrai Insights Sobre a Frota">
+            <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
+                id="1851b4f9-2fb6-4ff2-9826-a56fbdeebc17" name="FIP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="17713b90-1350-4439-b86a-2b0d4edc6f92" targetElement="#05297ece-7270-4010-9d7d-464a0d8339d2"
+                  sourceElement="#1851b4f9-2fb6-4ff2-9826-a56fbdeebc17"/>
+            </inputs>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="27250068-acc3-4cbd-947f-ae8a1f55dcc8" name="FOP 1">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="498b0be5-b28c-4498-a68c-2d9600cc1c5e" targetElement="#a52ae52e-5fe9-467c-b01f-4dc7a3c6cb52"
+                  sourceElement="#27250068-acc3-4cbd-947f-ae8a1f55dcc8"/>
+            </outputs>
+            <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
+                id="f1705550-1ffe-4732-9697-1d77c1af624f" targetElement="#f5c24b29-9bbd-4dd1-8868-ad3fdf5bbca4"
+                sourceElement="#778c2557-f36a-452b-a45e-9b04440fc85d"/>
+          </ownedFunctions>
+          <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
               id="7879b71b-c42f-45ae-aeae-2d1fbb0c556e" name="Armazena Dados da Frota">
             <inputs xsi:type="org.polarsys.capella.core.data.fa:FunctionInputPort"
                 id="1c02f2a7-1ae4-4f7a-9706-e357dba13cbb" name="FIP 1"/>
@@ -612,6 +740,12 @@
               <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
                   id="c1e38322-f0d1-4aaf-b220-30d22477e85f" targetElement="#8da77af0-2452-4dbc-a6ff-f2d22b643d0d"
                   sourceElement="#29e04b8a-c100-4661-b05d-be339a52a98a"/>
+            </outputs>
+            <outputs xsi:type="org.polarsys.capella.core.data.fa:FunctionOutputPort"
+                id="499b7493-8aa8-4907-9c39-cf73b6714f6a" name="FOP 2">
+              <ownedPortRealizations xsi:type="org.polarsys.capella.core.data.information:PortRealization"
+                  id="f427390e-2215-474c-b029-7c111ea26717" targetElement="#296e6b2e-d119-4f4e-a98d-bc8685a2603e"
+                  sourceElement="#499b7493-8aa8-4907-9c39-cf73b6714f6a"/>
             </outputs>
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                 id="ed33be19-613f-4c93-8df8-337a936621b2" targetElement="#b4aac2cd-9153-48ca-abb0-1c536aaa7786"
@@ -681,8 +815,8 @@
                 sourceElement="#c40cc360-af5b-4728-a196-34c46c059ad9"/>
           </ownedFunctionalExchanges>
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
-              id="47b2790f-9115-4dc4-a779-b2719fbc96c6" name="Dados da Frota" target="#236da47f-20b3-4cf7-a3e2-5538cb199f63"
-              source="#29e04b8a-c100-4661-b05d-be339a52a98a">
+              id="47b2790f-9115-4dc4-a779-b2719fbc96c6" name="Dados de 1..* Veículos"
+              target="#236da47f-20b3-4cf7-a3e2-5538cb199f63" source="#29e04b8a-c100-4661-b05d-be339a52a98a">
             <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
                 id="361b14dc-f189-4b58-ad71-2ec4cc83eb6a" targetElement="#ae27da53-0ba1-4262-bdaf-57b5026b2650"
                 sourceElement="#47b2790f-9115-4dc4-a779-b2719fbc96c6"/>
@@ -699,6 +833,20 @@
           <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
               id="b4fad9dd-9356-4931-b9c4-564da11028b4" name="Dados de 1 Veículo"
               target="#1c02f2a7-1ae4-4f7a-9706-e357dba13cbb" source="#ec11b2a6-e0d6-4e32-8fee-8a0fd66f1d5d"/>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="80850ba5-73ca-49ae-9343-9db3634487c6" name="Insights Sobre a Frota"
+              target="#bab2d970-0e15-40ca-9d5a-3f19208a9286" source="#27250068-acc3-4cbd-947f-ae8a1f55dcc8">
+            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
+                id="213ef70e-8d52-4e94-afe2-e27e00745bf7" targetElement="#dd481e7d-da13-4094-a3b8-e9903e934230"
+                sourceElement="#80850ba5-73ca-49ae-9343-9db3634487c6"/>
+          </ownedFunctionalExchanges>
+          <ownedFunctionalExchanges xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchange"
+              id="a6daf3a5-cb4b-4e78-b228-cecf157bf85a" name="Dados de 1..* Veículos"
+              target="#1851b4f9-2fb6-4ff2-9826-a56fbdeebc17" source="#499b7493-8aa8-4907-9c39-cf73b6714f6a">
+            <ownedFunctionalExchangeRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionalExchangeRealization"
+                id="202ca182-d57a-4c6a-bc10-c789933808dd" targetElement="#ffcf1668-419f-42af-9835-15617cde61ba"
+                sourceElement="#a6daf3a5-cb4b-4e78-b228-cecf157bf85a"/>
+          </ownedFunctionalExchanges>
         </ownedPhysicalFunctions>
       </ownedFunctionPkg>
       <ownedAbstractCapabilityPkg xsi:type="org.polarsys.capella.core.data.la:CapabilityRealizationPkg"
@@ -832,6 +980,9 @@
                 sourceElement="#8964b6ef-5002-499b-ba02-ddb91911eaa1"/>
             <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
                 id="8964b6ef-5002-499b-ba02-ddb91911eaa1" targetElement="#7879b71b-c42f-45ae-aeae-2d1fbb0c556e"
+                sourceElement="#688f7a8b-2040-4f99-a0f2-a30404bad7e1"/>
+            <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
+                id="2f133fb9-0c7d-43fd-96bb-248f9d5547d8" targetElement="#778c2557-f36a-452b-a45e-9b04440fc85d"
                 sourceElement="#688f7a8b-2040-4f99-a0f2-a30404bad7e1"/>
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
                 id="f89db193-8be5-4865-8047-d98c4a2140b0" name="CP 1" orientation="IN"
